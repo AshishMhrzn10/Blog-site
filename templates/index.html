@@ -36,10 +36,10 @@
             <header class="post-header">
               <div class="category">
                 {% for cat in featured.categories.all %}
-                  <a href="#">{{cat}}</a>
+                  {{cat}}&nbsp;&nbsp;
                 {% endfor %}
               </div>
-              <a href="post.html">
+              <a href="{% url 'post_detail' featured.id %}">
                 <h2 class="h4">{{featured.title}}</h2>
               </a>
             </header>
@@ -80,7 +80,7 @@
     <div class="row">
     {% for latest in latest_post %}
       <div class="post col-md-4">
-        <div class="post-thumbnail"><a href="#"><img src="{{latest.thumbnail.url}}" alt="..." class="img-fluid"></a></div>
+        <div class="post-thumbnail"><a href="{% url 'post_detail' latest.id %}"><img src="{{latest.thumbnail.url}}" alt="..." class="img-fluid"></a></div>
         <div class="post-details">
           <div class="post-meta d-flex justify-content-between">
             <div class="date">{{latest.timestamp}}</div>
@@ -89,7 +89,7 @@
                 <a href="#">{{cat}}</a>
               {% endfor %}
             </div>
-          </div><a href="#">
+          </div><a href="{% url 'post_detail' latest.id %}">
             <h3 class="h4">{{latest.title}}</h3></a>
           <p class="text-muted">{{latest.overview|slice:'0:100'}} ...</p>
         </div>
